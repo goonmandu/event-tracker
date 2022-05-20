@@ -39,7 +39,7 @@ with open("data", "r+") as data:
 list_of_instances = []
 
 monthly_totals = {
-    "yearly_total": 0,
+    "yearly": 0,
     "january": 0,
     "february": 0,
     "march": 0,
@@ -65,7 +65,7 @@ daily_totals = {
 }
 
 monthly_averages = {
-    "yearly_average": 0,
+    "yearly": 0,
     "january": 0,
     "february": 0,
     "march": 0,
@@ -85,11 +85,19 @@ streaks = {
     "no_fap": 0
 }
 
-for entry in fap_array:
-    aux = []
-    for member in entry:
-        aux.append(member)
-    list_of_instances.append(Fap(aux[0], aux[1], aux[2], aux[3], aux[4], aux[5], aux[6], aux[7]))
 
-for fap in list_of_instances:
-    print(fap.to_string())
+def load_data():
+    for entry in fap_array:
+        aux = []
+        for member in entry:
+            aux.append(member)
+        list_of_instances.append(Fap(aux[0], aux[1], aux[2], aux[3], aux[4], aux[5], aux[6], aux[7]))
+
+
+def debug_print():
+    for fap in list_of_instances:
+        print(fap.to_string())
+
+
+def sum_monthly():
+    pass
