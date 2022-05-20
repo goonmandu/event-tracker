@@ -1,5 +1,5 @@
 from enum import Enum
-
+# import matplotlib  TODO: pip3 install matplotlib
 
 class Material(Enum):
     HENTAI = 1
@@ -37,6 +37,54 @@ with open("data", "r+") as data:
     fap_array = [field.strip("\n").split(" ") for field in data]
 
 list_of_instances = []
+
+monthly_totals = {
+    "yearly_total": 0,
+    "january": 0,
+    "february": 0,
+    "march": 0,
+    "april": 0,
+    "may": 0,
+    "june": 0,
+    "july": 0,
+    "august": 0,
+    "september": 0,
+    "october": 0,
+    "november": 0,
+    "december": 0,
+}
+
+daily_totals = {
+    "monday": 0,
+    "tuesday": 0,
+    "wednesday": 0,
+    "thursday": 0,
+    "friday": 0,
+    "saturday": 0,
+    "sunday": 0
+}
+
+monthly_averages = {
+    "yearly_average": 0,
+    "january": 0,
+    "february": 0,
+    "march": 0,
+    "april": 0,
+    "may": 0,
+    "june": 0,
+    "july": 0,
+    "august": 0,
+    "september": 0,
+    "october": 0,
+    "november": 0,
+    "december": 0,
+}
+
+streaks = {
+    "yes_fap": 0,
+    "no_fap": 0
+}
+
 for entry in fap_array:
     aux = []
     for member in entry:
