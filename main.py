@@ -3,18 +3,18 @@ from enum import Enum
 
 class Material(Enum):
     HENTAI = 1
-    IRL = 2
+    IRL    = 2
     RENDER = 3
-    ASMR = 4
+    ASMR   = 4
 
 
 class Parties(Enum):
-    MALE_MALE = 1
-    MALE_FEMALE = 2
+    MALE_MALE     = 1
+    MALE_FEMALE   = 2
     FEMALE_FEMALE = 3
-    SOLO_MALE = 4
-    SOLO_FEMALE = 5
-    OTHER = 6
+    SOLO_MALE     = 4
+    SOLO_FEMALE   = 5
+    OTHER         = 6
 
 
 class Fap:
@@ -28,6 +28,20 @@ class Fap:
         self.material = material
         self.parties = parties
 
+    def to_string(self):  # TODO: Format ints to be 2 digits long with leading zeroes
+        return f"{self.year}-{self.month}-{self.day} {self.hour}:{self.minute} for {self.duration}m, to {self.material} starring {self.parties}"
+
 
 with open("data", "r+") as data:
-    fap_array = []
+    # 2D Array
+    fap_array = [field.strip("\n").split(" ") for field in data]
+
+list_of_instances = []
+for entry in fap_array:
+    aux = []
+    for member in entry:
+        aux.append(member)
+    list_of_instances.append(Fap(aux[0], aux[1], aux[2], aux[3], aux[4], aux[5], aux[6], aux[7]))
+
+for fap in list_of_instances:
+    print(fap.to_string())
