@@ -101,3 +101,15 @@ def debug_print():
 
 def sum_monthly():
     pass
+
+
+def average_monthly():
+    pass
+
+
+def get_streaks():
+    pass
+
+
+def sum_daily():
+    pass
