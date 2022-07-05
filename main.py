@@ -1,6 +1,12 @@
 from enum import Enum
-# import matplotlib  TODO: pip3 install matplotlib
+# import matplotlib as plt  TODO: WTF IT WON'T IMPORT
 
+
+def ldzero(numstr) -> str:
+    return "%02d" % int(numstr)
+
+
+""" LOL IM NOT GONNA IMPLEMENT ENUMS
 class Material(Enum):
     HENTAI = 1
     IRL    = 2
@@ -15,6 +21,7 @@ class Parties(Enum):
     SOLO_MALE     = 4
     SOLO_FEMALE   = 5
     OTHER         = 6
+"""
 
 
 class Fap:
@@ -28,13 +35,30 @@ class Fap:
         self.material = material
         self.parties = parties
 
-    def to_string(self):  # TODO: Format ints to be 2 digits long with leading zeroes
-        return f"{self.year}-{self.month}-{self.day} {self.hour}:{self.minute} for {self.duration}m, to {self.material} starring {self.parties}"
+    def __str__(self):
+        return f"{ldzero(self.year)}-{ldzero(self.month)}-{ldzero(self.day)} {ldzero(self.hour)}:{ldzero(self.minute)} for {self.duration}m, to {self.material} starring {self.parties}"
 
 
 with open("data", "r+") as data:
-    # 2D Array
+    # 2D Array [[ele, ments], [ele, ments]] etc
     fap_array = [field.strip("\n").split(" ") for field in data]
+    data.read()  # Push position to end of file for append mode. Pretty sure there's a better way to do this
+
+
+def add_entry():
+    entry_attrs = []
+    date = input("Date (YYYY-MM-DD): ").split("-")
+    for item in date:
+        entry_attrs.append(item)
+    time = input("Time (HH:MM): ").split(":")
+    for item in time:
+        entry_attrs.append(item)
+    material = input("Material: ")
+    entry_attrs.append(material)
+    people = input("To whom (Genders): ")
+    entry_attrs.append(people)
+    for attr in entry_attrs:
+        data.write(attr)
 
 list_of_instances = []
 
@@ -54,7 +78,7 @@ monthly_totals = {
     "december": 0,
 }
 
-daily_totals = {
+day_totals = {
     "monday": 0,
     "tuesday": 0,
     "wednesday": 0,
@@ -96,7 +120,7 @@ def load_data():
 
 def debug_print():
     for fap in list_of_instances:
-        print(fap.to_string())
+        print(str(fap))
 
 
 def sum_monthly():
@@ -113,3 +137,8 @@ def get_streaks():
 
 def sum_daily():
     pass
+
+
+
+load_data()
+debug_print()
