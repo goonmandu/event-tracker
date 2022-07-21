@@ -1,2 +1,2 @@
 # event-tracker
-A file-based dail event logger and stats printer.
+A file-based daily event logger and stats printer.
