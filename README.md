@@ -1,2 +1,2 @@
-# fap-tracker
-A file-based masturbation logger and stats printer.
+# event-tracker
+A file-based dailt event logger and stats printer.
